@@ -1,22 +1,30 @@
-var express= require('express');
-var socket=require('socket.io');
-var path = require('path');
+var express = require('express');
+var socket = require('socket.io');
 
-//app Setup
-var app=express();
-var server= app.listen(5000,function(){
-
-    console.log("Port Number 5000");
+// App setup
+var app = express();
+var server = app.listen(4000, function(){
+    console.log('listening for requests on port 4000,');
 });
 
-//Static file
+// Static files
+app.use(express.static('public'));
 
-app.use(express.static(path.join(__dirname, '/public')));
+// Socket setup & pass server
+var io = socket(server);
+io.on('connection', (socket) => {
 
+    console.log('made socket connection', socket.id);
 
-var io=socket(server);
+    // Handle chat event
+    socket.on('chat', function(data){
+        // console.log(data);
+        io.sockets.emit('chat', data);
+    });
 
-io.on('connect',function(socket){
-    console.log('Socket Connection');
-})
+    // Handle typing event
+    socket.on('typing', function(data){
+        socket.broadcast.emit('typing', data);
+    });
 
+});
