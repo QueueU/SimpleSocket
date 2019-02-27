@@ -1,5 +1,7 @@
 // Make connection
-var socket = io.connect('http://localhost:4000');
+
+
+var socket = io.connect('http://192.168.31.97:4000');
 
 // Query DOM
 var message = document.getElementById('message'),
@@ -23,6 +25,7 @@ message.addEventListener('keypress', function(){
 
 // Listen for events
 socket.on('chat', function(data){
+   
     feedback.innerHTML = '';
     output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });

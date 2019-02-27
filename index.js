@@ -8,9 +8,23 @@ var server = app.listen(4000, function(){
 });
 
 // Static files
-app.use(express.static('public'));
+
 
 // Socket setup & pass server
+
+function getIp()
+{
+    app.use(express.static('public'));
+
+    var ip = require("ip");
+   
+    console.log(ip.address());
+
+    return ip;
+}
+
+
+app.use(express.static('public'));
 var io = socket(server);
 io.on('connection', (socket) => {
 
@@ -28,3 +42,6 @@ io.on('connection', (socket) => {
     });
 
 });
+
+
+module.exports =  exports = getIp;
