@@ -1,0 +1,22 @@
+{
+  "name": "simplesocket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QueueU/SimpleSocket.git"
+  },
+  "author": "Queue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/QueueU/SimpleSocket/issues"
+  },
+  "homepage": "https://github.com/QueueU/SimpleSocket#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
